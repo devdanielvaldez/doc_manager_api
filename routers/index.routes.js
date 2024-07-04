@@ -7,6 +7,7 @@ const NCF = require('./ncf');
 const Services = require('./services');
 const Doctors = require('./doctors');
 const Invoces = require('./invoces');
+const Reports = require('./reports');
 
 routers.use('/auth', Auth);
 routers.use('/ars', ARS);
@@ -16,5 +17,6 @@ routers.use('/ncf', NCF);
 routers.use('/services', Services);
 routers.use('/doctors', Doctors);
 routers.use('/invoces', Invoces);
+routers.use('/dashboard', Reports);
 
 module.exports = routers;
