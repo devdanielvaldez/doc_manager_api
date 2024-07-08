@@ -7,18 +7,27 @@ const NCF = require('../models/ncf');
 // Ver todas las facturas
 const getAllInvoices = async (req, res) => {
     try {
-        const invoices = await Invoice.find()
-        .populate('profile')
-        .populate({
-            path: 'doctor',
-            populate: {
-                path: 'speciality'
-            }
-        })
-        .populate('medicalCenter')
-        .populate('ars')
-        .populate('nfc')
-        .populate('services');
+        const { role, id } = req.headers; // Capturar el rol y el id desde los headers
+
+        let query = {};
+
+        if (role === 'DOCTOR') {
+            query = { doctor: id }; // Filtrar por el id del doctor si el rol es DOCTOR
+        }
+
+        const invoices = await Invoice.find(query)
+            .populate('profile')
+            .populate({
+                path: 'doctor',
+                populate: {
+                    path: 'speciality'
+                }
+            })
+            .populate('medicalCenter')
+            .populate('ars')
+            .populate('nfc')
+            .populate('services');
+
         res.status(200).json({ message: "Lista de facturas obtenida correctamente", status: 200, data: invoices });
     } catch (err) {
         res.status(500).json({ message: "Error inesperado", error: err });

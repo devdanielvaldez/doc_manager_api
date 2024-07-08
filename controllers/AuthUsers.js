@@ -3,6 +3,7 @@ const Credentials = require('../models/credentials');
 const Profile = require('../models/profile');
 const Doctor = require('../models/doctors');
 const jwt = require('jsonwebtoken');
+const { sendEmail } = require("../utils/sendEmail");
 
 const registerUser = async(req, res) => {
     try {
@@ -96,6 +97,8 @@ const registerDoctor = async(req, res) => {
 
         await DoctorRegister.save();
 
+        sendEmail(email, { name: name, username: email, password: pwd });
+
         // Return a success response
         res.status(200).json({ msg: "Médico creado correctamente", status: 200 });
     } catch (err) {
@@ -144,6 +147,8 @@ const loginUser = async (req, res) => {
             ok: true,
             message: "Login exitoso",
             token,
+            rol: user.rol,
+            id: user._id,
             status: 200
         });
     } catch (err) {

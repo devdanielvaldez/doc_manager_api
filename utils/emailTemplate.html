@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>M & G Gestores de Cobros</h1>
+        </div>
+        <div class="content">
+            <h2>Bienvenido a M & G Gestores de Cobros</h2>
+            <p>Estimado/a {{name}},</p>
+            <p>Gracias por registrarte en nuestra plataforma para médicos.</p>
+            <p>Estos son tus datos de acceso:</p>
+            <ul>
+                <li><strong>Usuario:</strong> {{username}}</li>
+                <li><strong>Contraseña:</strong> {{password}}</li>
+            </ul>
+            <p>Por favor, inicia sesión en nuestra plataforma utilizando los datos anteriores.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 M & G Gestores de Cobros. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
